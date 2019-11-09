@@ -397,6 +397,36 @@ summary {
 </li>
 <li>From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.</li>
 </ul>
+</div>
+<div id="code-structure" class="section level4">
+<h4>Code Structure</h4>
+<ol style="list-style-type: decimal">
+<li><p>Reads in the packages necessary for tidying the data.</p></li>
+<li>Reads in the data sets:
+<ul>
+<li>‘features_info.txt’: Shows information about the variables used on the feature vector.<br />
+</li>
+<li>‘features.txt’: List of all features.<br />
+</li>
+<li>‘activity_labels.txt’: Links the class labels with their activity name.<br />
+</li>
+<li>‘train/X_train.txt’: Training set.<br />
+</li>
+<li>‘train/y_train.txt’: Training labels.<br />
+</li>
+<li>‘test/X_test.txt’: Test set.<br />
+</li>
+<li>‘test/y_test.txt’: Test labels.</li>
+</ul></li>
+<li><p>Combines the test data and train data separately using cbind. This brings in the subject data, activity data and variable data together.</p></li>
+<li><p>I’ve also included a line of code to add in which data source it’s from by using the mutate function to label it whether it’s test or train.</p></li>
+<li><p>Combine all datasets into one using rbind. Read in the name data and add in the other custom names. Assign this to the column names.</p></li>
+<li><p>Extract only the mean and standard deviation columns using grep.</p></li>
+<li><p>Read in activity names to replace the Activity ID column.</p></li>
+<li><p>Bring in the functional activity names using left_join. Reorder the dataset and remove Activity ID and data type (removes train and test column - can change this to keep it and understand which data is used).</p></li>
+<li><p>Create the tidy data set using group_by and summarise_at (summarsing using mean to calculate the average).</p></li>
+<li><p>Save the tidy data to a new text file.</p></li>
+</ol>
 <div id="reference" class="section level6">
 <h6><strong>Reference</strong></h6>
 <p>Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013.</p>

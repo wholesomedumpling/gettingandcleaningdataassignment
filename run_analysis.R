@@ -1,5 +1,4 @@
-#this is the script to satisfy the requirements for Week 3 Cleaning & Getting Data assignment
-
+#this is the script to satisfy the requirements for Week 4 Cleaning & Getting Data assignment
 
 library(plyr)
 library(dplyr)
