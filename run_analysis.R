@@ -57,6 +57,6 @@ tidydata <- mydata %>%
         summarise_at(vars('tBodyAcc-mean()-X':'fBodyBodyGyroJerkMag-meanFreq()'), mean) #set the mean
 
 #create the file
-write.table(tidydata, "tidydata.txt", sep= " ")
+write.table(tidydata, "tidydata.txt", sep= " ", row.names = FALSE)
 
 
