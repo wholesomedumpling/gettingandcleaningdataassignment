@@ -3,7 +3,7 @@
 
 library(plyr)
 library(dplyr)
-library(data.table)
+
 
 #set the working directory
 
@@ -49,8 +49,15 @@ descriptiveactivity <- read.table("UCI HAR Dataset/activity_labels.txt", header 
 mydata <- left_join(mydata, descriptiveactivity, by = "ID")
 
 #reorder the columns and remove ID
-mydata <- mydata[,c(83, 2:82)]
+mydata <- mydata[,c(2,83,82, 3:81)]
 
-#tidydata <- 
+## PART 5 ANSWER: Create Tidy Dataset
+#group by subject and variable
+tidydata <- mydata %>%
+        group_by(Subject, Activity) %>%
+        summarise_at(vars('tBodyAcc-mean()-X':'fBodyBodyGyroJerkMag-meanFreq()'), mean) #set the mean
+
+#create the file
+write.table(tidydata, "tidydata.txt", sep= " ")
 
 
